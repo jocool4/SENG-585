@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Welcome!
 
 ## Course Time and Location
@@ -89,3 +90,7 @@
 ## "How not to do Reliability"
 - Occasionally, we'll discuss the results of applying poor reliability principles via real world examples.
 
+=======
+# SENG-585
+Course Materials for Reliability in Systems Design
+>>>>>>> origin/master
