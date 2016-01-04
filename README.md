@@ -2,16 +2,16 @@
 ## Welcome!
 
 ## Course Time and Location
-- MTWF 1500-1600 Bldg. 646 Rm. 216
+- MTWF 1000-1100 Bldg. 646 Rm. 220
 
 ## Instructor and Office
-- Maj Jason Freels, Bldg. 640, Rm. 105A
+- Maj Jason Freels, Bldg. 640, Rm. 205B
 - Email: __jason.freels@afit.edu__
 - Phone: 255-3636 x4676
 - Cell: (937) 430-6619
 
 ## Office hours
-- MTWF 1400-1500 or by appt. (subject to change depending on student schedules).
+- MTWF 1100-1200 or by appt. (subject to change depending on student schedules).
 
 ## Course Objectives
 - The primary goal of this course is to introduce the concepts and techniques of life data analysis (i.e. reliability).  This course will be both theoretical (learning common theoretical models and concepts) and applied (actually fitting said models to data). 
@@ -42,14 +42,14 @@
 - Your grade on the project will be based on the quality of your presentation and the quality of your analysis -- taking project difficulty into consideration.  So, don't make the project too hard (duh) or too easy. 
 
 ## Software
-- In previous STAT 687 offerings, I allowed students to use any software package to complete their assignments.  This became difficult, for the students to complete their work and for me to grade them.  So, I've decided to require you to use the R programming language to complete and submit your assignments.
+- In previous offerings of this course, I allowed students to use any software package to complete their assignments.  This became difficult, for the students to complete their work and for me to grade them.  So, I've decided to require you to use the R programming language to complete and submit your assignments.
 
 - I realize that some of you may be new to coding or may have never coded before. Don't worry, you don't need an extensive background in R or \LaTeX to be successful in this course.  I've created several demo presentations to get you up to speed and I'm always willing to help out when needed.  The __[first demo presentation](https://afit.shinyapps.io/R-Installation/R-Installation.Rmd)__ walks you through the process of getting the R/RStudio tool-chain installed and ready for the course. 
 
 - The textbook references a well executed package, called SPLIDA, that was originally written by Dr. Meeker in the S-Plus language (SPLIDA stands for S Plus Life Data Anaysis).  The S-Plus language was later deprecated and replaced by R, so Dr. Meeker created an alpha version of the SPLIDA package, modified to run in R, called RSplida.  By Dr. Meeker's own admission, the effort to port SPLIDA to the R language was rushed and incomplete.  Therefore, I've been working with Dr. Meeker to update RSplida to an R package, currently called meekR.  This package is based on the textbook and will be used throughout the course.
 
 ## A Few Important Dates
-- No Class:   2 July 2015 (AETC Family Day), 3 July 2014 (4th of July Observed) 
+- No Class:   18 January 2016 (Columbus Day), 15 February 2016 (President's Day) 
 
 ## Grading
 - [1.00 - 0.93]: A
@@ -78,14 +78,14 @@
 - [__Chapter 19: Analyzing Accelerated Life Test Data__](https://afit.shinyapps.io/Lecture-Chapter-19) (Week 9-10)
 - [__Chapter 20: Planning Accelerated Life Tests__](https://afit.shinyapps.io/Lecture-Chapter-20) (Week 10)
 
-## My teaching philosophy
+## My Teaching Philosophy
 
 - As AFIT graduates, you'll be expected to know how to approach and solve real-world problems AND present your results in a meaningful way so that decision makers can make defensible decisions.  
 
 - As AFIT instructors, we do a disservice to our students by not teaching new and improved ways to produce and share your results.  Further, we do a disservice by teaching you to solve problems using tools that you won't have access to after leaving AFIT.  Therefore, I re-built this course using the R/RStudio tool-chain to help you produce better results...faster.
 
 ## Challenge your instructor
-- If you can't trip me up, you're not trying.  Discussion leads to a more interesting class, so questions are always good.
+- If you can't trip me up from time to time, you're not trying.  Discussion leads to a more interesting class, so questions are always good.
 
 ## "How not to do Reliability"
 - Occasionally, we'll discuss the results of applying poor reliability principles via real world examples.
