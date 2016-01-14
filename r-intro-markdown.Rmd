@@ -1,0 +1,433 @@
+---
+title: "Introduction to R"
+subtitle: 'Building Interactive Documents with rmarkdown'
+author: "Maj Jason Freels"
+date: "Air Force Institute of Technology"
+output: 
+  ioslides_presentation:
+    widescreen: true
+    logo: images/Rlogo.png
+    css: css/custom.css
+runtime: shiny
+resource_files:
+- images/Rlogo.png
+---
+
+<script src="js/audiojs/audiojs/audio.min.js"></script>
+<script> audiojs.events.ready(function() {audiojs.createAll();}); </script>
+
+```{r echo=FALSE,message=FALSE, warning=FALSE}
+foot<-"Intro to R: rmarkdown"
+
+library(survival)
+library(pander)
+```
+
+## The Typical Disjointed Workflow
+<div id = "foot">`r foot`</div>
+
+Starts with one tool to solve a research problem
+
+Uses another tool to document the results
+
+Uses more tools to create plots & tables
+
+Ends with a mountain of files (data sets, code, results, plots, tables, text) that need to be stiched together
+
+__The typical disjointed workflow is not reproducible or portable__
+
+__The typical disjointed workflow makes collaboration difficult__
+
+## The Typical Disjointed Workflow
+<div id = "foot">`r foot`</div>
+
+<div class="container">
+   <div class="column-left">
+<u><center><h2><font color="black">__Research Tools__</font></h2></center></u>
+
+- <img src="images/matlab.png" height="60px">
+
+- <img src="images/jmp.png" height="60px">
+
+- <img src="images/python-logo.png" height="60px">
+
+- <img src="images/rlogo.png" height="60px">
+</div>
+
+<div class="column-center">
+<u><center><h2><font color="black">__Editing Tools__</font></h2></center></u>
+
+- <img src="images/ms-word.png">
+
+- <img src="images/ms-excel.png">
+
+- <font color="black">$\LaTeX$</font>
+
+- <img src="images/open-office.png" height="60px">
+</div>
+   <div class="column-right">
+<u><center><h2><font color="black">__Presentation Tools__</font></h2></center></u>
+
+- <img src="images/ms-pp.png">   
+
+- <img src="images/prezi.png">
+
+- <img src="images/google-docs.png">
+
+- <font color="black">$\LaTeX$</font>
+</div>
+</div>
+
+
+## And Then it Happens...
+<div id = "foot">`r foot`</div>
+
+You just completed a paper when:
+
+- Your advisor notices multiple incorrect values in your data set, OR
+- You sponsor sends new data that could change your conclusions
+
+What steps are required to update the paper?
+
+- Fix the data
+- Re-run analysis code
+- Update affected figures and tables
+- Copy/paste updated figure and tables into document
+- Update text
+
+## Reproducible Research
+<div id = "foot">`r foot`</div>
+
+Publications often include analysis results & discussion - but not code & data
+
+As result, you may be unable to follow or reproduce the author's results
+
+- Were the assumptions met?
+
+- What method(s) were used to produce the results 
+
+- What if there's an error?
+
+With R, every part of your analysis can be shared (if you want it to be)
+
+If you don't like how a R function is implemented...change it!
+
+"Freeze" your code to perform the same in the future - regardless of updates <br>
+<font color="red">__(with the packrat or checkpoint packages)__</font>
+
+## Dynamic Documents
+<div id = "foot">`r foot`</div>
+
+By combining R with the RStudio IDE
+
+- Text, codes, tables, and figures are all contained within a single document
+- Everything can be updated simultaneouly by simply fixing the data set 
+- Re-compiling the entire document is done with a single click
+
+Documents can be compiled in multiple formats for easy sharing
+
+- PDF
+- Word (.docx)
+- HTML
+
+Plus, documents can easily be transformed into HTML presentations
+
+# All This is Done with Markdown|Using the rmarkdown Package
+
+## What is [Markdown](http://daringfireball.net/projects/markdown)?
+<div id="foot">`r foot`</div>
+
+- An open-source tool for converting .txt files to .html, .pdf, .docx, etc...
+
+- A syntax designed to be easily read by someone unfamiliar with the code
+
+- Created in 2004 by John Gruber and Aaron Swartz for developing web content  
+
+- Gruber and Swartz later abandoned further development of the original Markdown code
+
+- Others recognized Markdown as a simple syntax to create $\LaTeX$-quality documents
+
+- These other Markdown builds are called "flavors"
+
+- No Markdown standard currently exists, though an effort to merge the flavors is underway (would that be **<font color="#FF4D4D">neo</font><font color="tan">poli</font><font color="#754719">tan</font>**?)
+
+## Flavors of Markdown
+<div id="foot">`r foot`</div>
+
+Each Markdown flavor has a slightly different syntax
+
+- [__Markdown Extra__](https://michelf.ca/projects/php-markdown)
+
+- [__MultiMarkdown__](http://fletcherpenney.net/multimarkdown)
+
+- [__GitHub Markdown__](https://help.github.com/articles/github-flavored.markdown/)
+
+- [__kramdown__](http://kramdown.gettallong.org)
+
+- [__Pandoc Markdown__](http://pandoc.org)
+
+R (and this course) uses Pandoc-flavored Markdown via the [__rmarkdown package__](http://cran.r-project.org/web/packages/rmarkdown/index.html)
+
+For help with all things Markdown not discussed in this presentation, check out [__RMarkdown Basics__](http://rmarkdown.rstudio.com) 
+
+## rmarkdown
+<div id="foot">`r foot`</div>
+
+If you followed the [__R Installation Presentation__](https://afit.shinyapps.io/R-Installation/R-Installation.Rmd) you already installed the rmarkdown package
+
+You can verify that the latest version of rmarkdown is installed by entering the following code in the console window: 
+
+```{r, eval=FALSE}
+packageVersion("rmarkdown")
+```
+
+Which should return a value of `0.7` or greater
+
+If the value returned is less than `0.7`, install the latest version with
+
+```{r, eval=FALSE}
+install.packages("rmarkdown")
+```
+
+# What's So Great About Markdown|These Benefits Should be Clear by Then End of the Quarter 
+
+## Markdown Can Really Speed up Your Workflow
+<div id="foot">`r foot`</div>
+
+__Markdown allows you to put ALL of your content into one file__
+
+- ~~Text~~
+- Analysis code with <img src="images/Rlogo.png" height="30px"> chunks
+- HTML~5~, CSS^3^ and <u>JavaScript</u> code
+- *Images*
+- **Plots**
+- <font color="blue">Tables</font>
+- <center>***Interactive content***</center>
+
+__Markdown allows you to create papers and presentations at the same time__
+
+## Images Can Be Pulled in From a Local File...
+<div id="foot">`r foot`</div>
+
+<br>
+
+<center><img src="images/bridge-failure.jpg", width="500px"></center>
+
+## ...Or From the Web
+<div id="foot">`r foot`</div>
+
+<br>
+
+<center><img src="https://media.giphy.com/media/PoYRFr8s9CRIA/giphy.gif" width="500px"></center>
+
+# Figures|Rather Than Just Showing Figures Like This...
+
+## Figure 2.6 - Censored data likelihood contribution
+<div id="foot">`r foot`</div>
+
+```{r,echo=FALSE,fig.show='asis',fig.height=5.25,fig.align='center',fig.width=7}
+par(family="serif", font=2,bg=NA)
+x<-seq(0,2.4,by=.01)
+y<-dweibull(seq(0,2.4,by=.01),shape=1.7,scale=1)
+par(oma=c(0,0,0,0),family="serif", font=2)
+plot(x, y, type="l",lwd=1.25,axes=FALSE,xlab="",ylab="")
+polygon(c(seq(0,.5,.01),.5),c(dweibull(seq(0,.5,.01),sh=1.7,sc=1),0),col="black")
+polygon(c(1,seq(1,1.5,.01),1.5),c(0,dweibull(seq(1,1.5,.01),sh=1.7,sc=1),0),col="black")
+polygon(c(2,seq(2,2.4,.01),2.4),c(0,dweibull(seq(2,2.4,.01),sh=1.7,sc=1),0),col="black")
+text(.16,.75,"Left Censoring")
+text(1.3,.65,"Interval Censoring")
+text(2.2,.15,"Right Censoring")
+box(lwd=1.25)
+axis(side = 1, tck = -.015, labels = NA)
+axis(side = 2, tck = -.015, labels = NA)
+axis(side = 1, lwd = 0, line = -.6)
+axis(side = 2, lwd = 0, line = -.6, las = 1)
+mtext(side = 1, "t", line = 1.5)
+mtext(side = 3,"Figure 2.6 - Likelihood contributions for different kids of censoring",
+      line = 2)
+mtext(side = 2,"f(t)", line = 2.5)
+```
+
+# Figures|You Can Include the Code to Reproduce Them Like This... 
+
+## Figure 2.6 - Censored data likelihood contribution {.smaller}
+<div id="foot">`r foot`</div>
+
+```{r,echo=TRUE,fig.show='hide'}
+x<-seq(0,2.4,by=.01)
+par(family="serif", font=2,bg=NA)
+y<-dweibull(seq(0,2.4,by=.01),shape=1.7,scale=1)
+plot(x, y, type="l",lwd=1.25,axes=FALSE)
+###<b>
+polygon(c(seq(0,.5,.01),.5),c(dweibull(seq(0,.5,.01),sh=1.7,sc=1),0),col="black")
+polygon(c(1,seq(1,1.5,.01),1.5),c(0,dweibull(seq(1,1.5,.01),sh=1.7,sc=1),0),col="black")
+polygon(c(2,seq(2,2.4,.01),2.4),c(0,dweibull(seq(2,2.4,.01),sh=1.7,sc=1),0),col="black")
+###</b>
+text(.16,.75,"Left Censoring")
+text(1.3,.65,"Interval Censoring")
+text(2.2,.15,"Right Censoring")
+box(lwd=1.25)
+axis(side = 1, tck = -.015, labels = NA); axis(side = 2, tck = -.015, labels = NA)
+axis(side = 1, lwd = 0, line = -.6);      axis(side = 2, lwd = 0, line = -.6, las = 1)
+mtext(side = 1, "t", line = 1.5)
+mtext(side = 3,"Figure 2.6 - Likelihood contributions for different kids of censoring",
+      line = 2)
+mtext(side = 2,"f(t)", line = 2.5)
+```
+
+__Press "h" to emphasize new commands or important lines of code__
+
+# With <img src="images/Rlogo.png" height="40px"> and <img src="images/RStudio.png" height="40px"> Tables Are Simple
+
+## Table 2.2 - Censored data likelihood contribution
+<div id="foot">`r foot`</div>
+
+Censoring type                                           | Range               |  Likelihood
+---------------------------------------------------------|---------------------|-------------------------------|
+$d_{i}$ observations interval censored in $t_{i-1}$ and $t_{i}$|$t_{i-1}<T\le t_{i}$ |$[F(t_{i})-F(t_{i-1})]^{d_{i}}$|
+$l_{i}$ observations left censored at $t_{i}$                  |$T\le t_{i}$         |$[F(t_{i})]^{l_{i}}$           |
+$r_{i}$ observations right censored at $t_{i}$                 |$T>t_{i}$            |$[1-F(t_{i})]^{r_{i}}$         |
+
+<br>
+This Markdown table with $\LaTeX$ equations can be time consuming to build
+
+But, creating tables containing numerical elements, is rediculously fast 
+
+## $\LaTeX$ Tables w/ [xtable](http://cran.r-project.org/web/packages/xtable/index.html) (or [stargazer](http://cran.r-project.org/web/packages/stargazer/index.html) or [pander](http://cran.r-project.org/web/packages/pander/))
+<div id="foot">`r foot`</div>
+
+Go from a `data.frame` or a `matrix`...
+
+```{r xtable}
+head(mtcars)
+```
+
+...to a $\LaTeX$ table, instantly
+
+```{r, eval=FALSE}
+xtable::xtable(head(mtcars))
+```
+
+## $\LaTeX$ Tables w/ [xtable](http://cran.r-project.org/web/packages/xtable/index.html) {.smaller}
+<div id="foot">`r foot`</div>
+
+```{r, echo=FALSE, results='asis'}
+SMRD:::xarray(xtable::xtable(mtcars[1:12,1:7]))
+```
+
+## Stand-Alone Code Chunks
+<div id="foot">`r foot`</div>
+
+Stand-alone chunks begin with ` ```{r, chunk arguments}`
+
+Chunk arguments from the knitr package (See the [Full List](http://yihui.name/knitr/options))
+
+- `echo=TRUE` shows the entire code chunk in the output 
+- `echo=c(2,3)` shows lines 2 & 3 only
+- `eval=FALSE` does not run the code chunk
+- `message=FALSE` suppresses messages (helpful when loading packages)
+- `comment=##`  Inserts ## at beginning of each line of R output  
+- `fig.align='center'` Sets the horizontal position of a plot 
+
+Stand alone chunks end with three ticks ` ``` `
+
+## Inline R Code Chunks
+<div id="foot">`r foot`</div>
+
+Inline R code chunks are written as `r 'code to run'`
+
+Removing the initial `r` prints text as code (without running it)
+
+```{r,echo=TRUE}
+# Read data
+# analyze data
+# perform hypothesis test and give result as p value
+p<-0.03
+if (p<0.05) {null<-"we cannot reject the null hypothesis"}
+if (p>0.05) {null<-"we reject the null hypothesis"}
+```
+
+As result of this analysis, it is determined that $p=`r p`$ and therefore `r null`.
+
+## $\LaTeX$ Equations w/ MathJax
+<div id="foot">`r foot`</div>
+
+Display equations 
+
+- Equations that stand apart from the text to draw the reader's attention 
+- Should be placed on a separate line in your Markdown document
+- Begin and end with `$$` like this
+
+$$\gamma_2=\sqrt{\frac{\sigma^2}{\mu^2}}=\left[\Gamma\left(1+\frac{2}{\beta}\right)\Gamma^{-2}\left(1+\frac{1}{\beta}\right)-1\right]^{0.5}$$
+
+In-line equations
+
+- Equations placed in the body of the document
+- Begin and end with `$` like this $\boldsymbol{\pi}=(\pi_{1},\pi_{2},\pi_{3},\pi_{4})$
+
+## Equations aligned at Equals
+<div id="foot">`r foot`</div>
+
+In cases where multiple equations are used to show intermediate steps, it's far easier to read if the equations are aligned
+
+Here's how to align equations in rmarkdown (each equation is aligned at `&`)
+
+<br>
+
+$$
+\begin{aligned}
+P(V\le v)&=P(-\log \left(1-U \right)\le v)\\
+&=P(1-U > \exp(-v))\\
+&=P(U\le 1-\exp(-v))\\
+&=F_{_U}(1-\exp(-v)\\
+&=1-\exp(-V)
+\end{aligned}
+$$
+
+# Interactive Content|With Shiny it's Easy to Include Interactive Plots
+
+## Slide with Interactive Plot
+<div id="foot">`r foot`</div>
+
+```{r, echo=FALSE}
+inputPanel(
+  selectInput("n_breaks", label = "Number of bins:",
+              choices = c(10, 20, 35, 50), selected = 20),
+  
+  sliderInput("bw_adjust", label = "Bandwidth adjustment:",
+              min = 0.2, max = 2, value = 1, step = 0.2)
+)
+
+renderPlot({
+  par(bg = NA)
+  hist(faithful$eruptions, probability = TRUE, breaks = as.numeric(input$n_breaks),
+       xlab = "Duration (minutes)", main = "Geyser eruption duration", col = "bisque")
+  
+  dens <- density(faithful$eruptions, adjust = input$bw_adjust)
+  lines(dens, col = "blue", lwd = 2)
+})
+```
+
+
+
+## Example Hypothesis Test
+
+```{r,echo=TRUE}
+# Read data
+# analyze data
+# perform hypothesis test and give result as p value
+p<-0.03
+if (p<0.05) {null<-"we cannot reject the null hypothesis"}
+if (p>0.05) {null<-"we reject the null hypothesis"}
+```
+
+As result of this analysis is is determined that $p=`r p`$ and therefore `r null`
+
+## Regression Results {.smaller}
+
+```{r,echo=1}
+fit1 <- lm(mpg ~ am+gear+am*gear, data=mtcars)
+panderOptions("table.style", "multiline")
+table<-(summary(fit1)$coef)
+pander(table)
+```
