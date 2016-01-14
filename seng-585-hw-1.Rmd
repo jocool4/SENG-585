@@ -96,6 +96,6 @@ _Consider a cdf $F(t)=1-\exp\left[-\frac{t}{\eta}\right]^{\beta}, t>0, \eta>0, \
 
 _Show that the pdf, cdf, survival, hazard, and cumulative hazard are mathematically equivalent descriptions of a continuous distribution in the sense that given any of these functions the other four are completely determined_
 
-# From the text problem # 2.16
+<!--# From the text problem # 2.16
 
-_If a continuous random variable $T$ has a cdf $F(t)=Pr(T\le t)$, then it is easy to show that the transformed random variable $F(T)$ follows a $UNIF(0,1)$ distribution.  A similar property for random variables is that the cumulative hazard transformation $H(T)$ follows an exponential distribution.  Show this._
+_If a continuous random variable $T$ has a cdf $F(t)=Pr(T\le t)$, then it is easy to show that the transformed random variable $F(T)$ follows a $UNIF(0,1)$ distribution.  A similar property for random variables is that the cumulative hazard transformation $H(T)$ follows an exponential distribution.  Show this._-->
