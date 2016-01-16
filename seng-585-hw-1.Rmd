@@ -3,7 +3,7 @@ title : 'SENG 585 Homework # 1'
 subtitle: 'Due `r Sys.Date()+10`'
 output: 
   pdf_document:
-    fig_height: 5
+    fig_height: 5.5
     fig_width:  6
 graphics: yes
 ---
